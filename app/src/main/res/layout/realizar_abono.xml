@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:id="@+id/txt_abono_nombrecliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic|bold"
+            android:textSize="18sp"
+            android:text="Cliente:"/>
+
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:id="@+id/txt_abono_estatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="italic|bold"
+            android:textSize="18sp"
+            android:text="Estatus:"/>
+
+        <LinearLayout
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/edittext_redondo_pago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_abono_adeudo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic|bold"
+                android:textAlignment="center"
+                android:textColor="#0A360C"
+                android:textSize="18sp"
+                android:text="Adeudo de: $"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                android:id="@+id/tilabono_pagoadeudo"
+                android:hint="Ingresa Cantidad a Abonar">
+
+                <EditText
+                    android:id="@+id/txt_abono_Cantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableLeft="@drawable/ic_dinero"
+                    android:drawablePadding="5dp"
+                    android:maxLength="30"
+                    android:textSize="18sp"
+                    android:inputType="numberDecimal"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_margin="5dp"
+                android:id="@+id/btn_abono_Abonar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Abonar"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:theme="@style/BotonPagar" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</FrameLayout>

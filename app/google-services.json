@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "47197349191",
+    "firebase_url": "https://control-de-venta.firebaseio.com",
+    "project_id": "control-de-venta",
+    "storage_bucket": "control-de-venta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47197349191:android:264b1a613e21ba47",
+        "android_client_info": {
+          "package_name": "com.karla.control_venta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47197349191-upt74g8v68mqgs605qtl9biv4rsqk7t1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karla.control_venta",
+            "certificate_hash": "1a397c9eff1d5ede9ed90d99f155aa6feacb9ff1"
+          }
+        },
+        {
+          "client_id": "47197349191-sl25sl80dfd36mo9ukjenh5ektk29b7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk0w8kwpMmZfAk2qml6jMEOTaXv94sLII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47197349191-sl25sl80dfd36mo9ukjenh5ektk29b7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

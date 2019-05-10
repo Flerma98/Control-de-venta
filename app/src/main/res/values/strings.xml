@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Control_Venta</string>
+    <string name="tab_invitado_1">Abono</string>
+    <string name="tab_invitado_2">Venta</string>
+
+    <string name="tab_admin_1">Clientes</string>
+    <string name="tab_admin_2">Distribuidores</string>
+    <string name="tab_admin_3">Reportes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

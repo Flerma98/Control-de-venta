@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/fdegradado">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="3"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo"
+            />
+
+        <LinearLayout
+            android:paddingVertical="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:paddingHorizontal="20dp"
+                android:paddingTop="7dp"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                android:background="@drawable/edittext_redondo"
+                android:id="@+id/tilUsuario"
+                android:hint="Ingresa tu Usuario">
+
+                <EditText
+                    android:id="@+id/txt_login_Usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:drawablePadding="5dp"
+                    android:maxLength="30"
+                    android:textSize="18sp"
+                    android:inputType="textEmailAddress"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:paddingHorizontal="20dp"
+                android:paddingTop="7dp"
+                android:paddingBottom="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edittext_redondo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                app:passwordToggleEnabled="true"
+                android:id="@+id/tilContraseña"
+                android:hint="Ingresa tu Contraseña">
+
+                <EditText
+                    android:id="@+id/txt_login_Contraseña"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableStart="@drawable/ic_contrasena"
+                    android:textSize="18sp"
+                    android:drawablePadding="6dp"
+                    android:maxLength="20"
+                    android:inputType="textPassword"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:id="@+id/btn_login_Iniciar_Sesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Iniciar Sesion"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:theme="@style/BotonColorido" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
