@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <android.support.v4.widget.NestedScrollView
+        app:behavior_hideable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginVertical="5dp"
+                android:id="@+id/txt_venta_nombrecliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic|bold"
+                android:textSize="18sp"
+                android:text="Cliente:"/>
+
+
+            <LinearLayout
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/edittext_redondo_pago"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#808080"
+                    android:id="@+id/til_venta_Distribuidor"
+                    android:hint="ID de Distribuidor">
+
+                    <EditText
+                        android:id="@+id/txt_venta_Distribuidor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:drawableLeft="@drawable/ic_usuario"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="#377E3B"
+                        android:maxLength="10"
+                        android:textSize="18sp"
+                        android:inputType="number"
+                        android:paddingTop="16dp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#808080"
+                    android:id="@+id/til_venta_Cantidad"
+                    android:hint="Ingresa Cantidad a Total">
+
+                    <EditText
+                        android:id="@+id/txt_venta_Cantidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart"
+                        android:drawableLeft="@drawable/ic_dinero"
+                        android:drawablePadding="5dp"
+                        android:maxLength="30"
+                        android:textSize="18sp"
+                        android:inputType="numberDecimal"
+                        android:paddingTop="16dp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="17dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="#377E3B"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calendario"/>
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:id="@+id/spn_venta_semanas"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#808080" />
+
+                <Button
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_abono_Abonar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Vender"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:theme="@style/BotonPagar" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</FrameLayout>

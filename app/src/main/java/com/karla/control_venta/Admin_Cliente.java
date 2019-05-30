@@ -62,7 +62,7 @@ public class Admin_Cliente extends Fragment {
                     }
                     adapter.notifyDataSetChanged();
                     rv_Clientes.scheduleLayoutAnimation();
-                    if(Administrador.lista_Clientes.isEmpty()){ nohay.setVisibility(View.VISIBLE); nohay.setText("No hay Clientes"); }else{ nohay.setVisibility(View.GONE); }
+                    if(Administrador.lista_Clientes.isEmpty()){ nohay.setVisibility(View.VISIBLE);  }else{ nohay.setVisibility(View.GONE); }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {

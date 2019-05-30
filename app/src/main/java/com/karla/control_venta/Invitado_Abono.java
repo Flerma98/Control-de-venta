@@ -53,37 +53,42 @@ public class Invitado_Abono extends Fragment {
                         boolean encontrado = false;
                         for (int i = 0; i < Invitado.lista_Clientes.size(); i++) {
                             if (txtNombre.getText().toString().trim().equals(Invitado.lista_Clientes.get(i).getNombre()) && txtApellidoPa.getText().toString().trim().equals(Invitado.lista_Clientes.get(i).getApellido_Paterno()) && txtApellidoMa.getText().toString().trim().equals(Invitado.lista_Clientes.get(i).getApellido_Materno())) {
-                                encontrado = true;
-                                RealizarAbono.cliente= Invitado.lista_Clientes.get(i);
-                                RealizarAbono bottomSheet_AgregarCliente = new RealizarAbono();
-                                bottomSheet_AgregarCliente.show(getFragmentManager(), "Abonar_Cliente");
+                                if(Invitado.lista_Clientes.get(i).getDinero()>0) {
+                                    for (int x = 0; x < Invitado.lista_Ventas.size(); x++) {
+                                        if(Invitado.lista_Ventas.get(x).getIDCliente().equals(Invitado.lista_Clientes.get(i).getID())){
+                                            encontrado= true;
+                                            for (int z = 0; z < Invitado.lista_Distribuidores.size(); z++) {
+                                                if(Invitado.lista_Distribuidores.get(z).getID().equals(Invitado.lista_Ventas.get(x).getIDDistribuidor()))
+                                                    RealizarAbono.distribuidor= Invitado.lista_Distribuidores.get(z);
+                                            }
+                                            RealizarAbono.venta= Invitado.lista_Ventas.get(x);
+                                            RealizarAbono.cliente= Invitado.lista_Clientes.get(i);
+                                            RealizarAbono bottomSheet_AgregarCliente = new RealizarAbono();
+                                            bottomSheet_AgregarCliente.show(getFragmentManager(), "Abonar_Cliente");
+                                        }
+                                    }
+                                }else{
+                                    encontrado= true;
+                                    AlertDialog.Builder dialogo1 = new AlertDialog.Builder(getContext());
+                                    dialogo1.setTitle("Abono no disponible");
+                                    dialogo1.setMessage("El Cliente tiene no tiene adeudos");
+                                    dialogo1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialogo1, int id) {
+
+                                        }
+                                    });
+                                    dialogo1.show();
+                                }
                             }
                         }
                         if (!encontrado)
-                            Toast.makeText(getContext(), "No se encontró un Cliente con esos datos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "No se encontraron esos datos", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getContext(), "Complete todos los datos", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
-
-        try{
-            Invitado.ref_Usuarios.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Invitado.lista_Clientes.clear();
-                    for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
-                        Cliente cliente = objSnaptshot.getValue(Cliente.class);
-                        Invitado.lista_Clientes.add(cliente);
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-
-            });
-        }catch (Exception e){ Toast.makeText(getContext(), "Ocurrió un error obteniendo los datos", Toast.LENGTH_SHORT).show();}
 
         return view;
     }

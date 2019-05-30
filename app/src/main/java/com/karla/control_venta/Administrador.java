@@ -34,8 +34,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.karla.control_venta.BottomSheets.Agregar_Cliente;
 import com.karla.control_venta.BottomSheets.Agregar_Distribuidor;
 import com.karla.control_venta.Tablas.Abono;
@@ -57,6 +60,8 @@ public class Administrador extends AppCompatActivity  {
     static final FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static final DatabaseReference ref_Usuarios = database.getReference(FireBaseReference.REFERENCIA_USUARIOS);
     public static final DatabaseReference ref_Distribuidor = database.getReference(FireBaseReference.REFERENCIA_DISTRIBUIDORES);
+    public static final DatabaseReference ref_Ventas = database.getReference(FireBaseReference.REFERENCIA_VENTAS);
+    public static final DatabaseReference ref_Abonos = database.getReference(FireBaseReference.REFERENCIA_ABONOS);
 
     public static ArrayList<Cliente> lista_Clientes= new ArrayList<>();
     public static ArrayList<Distribuidor> lista_Distribuidores= new ArrayList<>();
@@ -81,6 +86,40 @@ public class Administrador extends AppCompatActivity  {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager (viewPager);
         btnFlotante= findViewById(R.id.fab_admin);
+
+        try{
+            ref_Abonos.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    lista_Abono.clear();
+                    for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                        Abono abono = objSnaptshot.getValue(Abono.class);
+                        lista_Abono.add(abono);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+
+            });
+        }catch (Exception e){ Toast.makeText(Administrador.this, "Ocurrió un error obteniendo los datos", Toast.LENGTH_SHORT).show();}
+
+        try{
+            ref_Ventas.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    lista_Ventas.clear();
+                    for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
+                        Venta venta = objSnaptshot.getValue(Venta.class);
+                        lista_Ventas.add(venta);
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+
+            });
+        }catch (Exception e){ Toast.makeText(Administrador.this, "Ocurrió un error obteniendo los datos", Toast.LENGTH_SHORT).show();}
 
         btnFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +157,9 @@ public class Administrador extends AppCompatActivity  {
                         btnFlotante.setImageDrawable(getResources().getDrawable(R.drawable.ic_agregar_distribuidor));
                         break;
                     case 2:
+                        btnFlotante.setVisibility(View.GONE);
+                        break;
+                    case 3:
                         btnFlotante.setVisibility(View.GONE);
                         break;
                 }

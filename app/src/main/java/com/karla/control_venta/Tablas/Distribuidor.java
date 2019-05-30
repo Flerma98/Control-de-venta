@@ -12,12 +12,15 @@ public class Distribuidor {
     private String Estado;
     private String Estatus;
     private String Sexo;
+    private double Saldo;
+    private double Limite_Credito;
+    private int Clientes;
     private String UID;
 
     public Distribuidor() {
     }
 
-    public Distribuidor(String ID, String apellido_Paterno, String apellido_Materno, String nombre, String telefono, String correo, String direccion, String ciudad, String estado, String estatus, String sexo, String UID) {
+    public Distribuidor(String ID, String apellido_Paterno, String apellido_Materno, String nombre, String telefono, String correo, String direccion, String ciudad, String estado, String estatus, String sexo, double saldo, double limite_Credito, int clientes, String UID) {
         this.ID = ID;
         Apellido_Paterno = apellido_Paterno;
         Apellido_Materno = apellido_Materno;
@@ -29,6 +32,9 @@ public class Distribuidor {
         Estado = estado;
         Estatus = estatus;
         Sexo = sexo;
+        Saldo = saldo;
+        Limite_Credito = limite_Credito;
+        Clientes = clientes;
         this.UID = UID;
     }
 
@@ -118,6 +124,30 @@ public class Distribuidor {
 
     public void setSexo(String sexo) {
         Sexo = sexo;
+    }
+
+    public double getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        Saldo = saldo;
+    }
+
+    public double getLimite_Credito() {
+        return Limite_Credito;
+    }
+
+    public void setLimite_Credito(double limite_Credito) {
+        Limite_Credito = limite_Credito;
+    }
+
+    public int getClientes() {
+        return Clientes;
+    }
+
+    public void setClientes(int clientes) {
+        Clientes = clientes;
     }
 
     public String getUID() {

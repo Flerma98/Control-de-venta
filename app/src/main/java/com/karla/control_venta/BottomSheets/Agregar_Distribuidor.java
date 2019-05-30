@@ -26,6 +26,8 @@ import com.karla.control_venta.Tablas.Distribuidor;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.UUID;
 
 public class Agregar_Distribuidor extends BottomSheetDialogFragment {
@@ -73,7 +75,14 @@ public class Agregar_Distribuidor extends BottomSheetDialogFragment {
                     Distribuidor distribuidor = new Distribuidor();
                     int ID= 1;
                     try{
-                        ID= Integer.parseInt(Administrador.lista_Distribuidores.get(Administrador.lista_Distribuidores.size()-1).getID()) + 1;
+                        ArrayList<Distribuidor> distribuidores= Administrador.lista_Distribuidores;
+                        Collections.sort(distribuidores, new Comparator<Distribuidor>() {
+                            @Override
+                            public int compare(Distribuidor p1, Distribuidor p2) {
+                                return new Integer(p1.getID()).compareTo(new Integer(p2.getID()));
+                            }
+                        });
+                        ID= Integer.parseInt(distribuidores.get(distribuidores.size()-1).getID()) + 1;
                     }catch (Exception e){}
                     distribuidor.setID(String.valueOf(ID));
                     distribuidor.setApellido_Paterno(txtDistribuidorApellido_Paterno.getText().toString().trim());
@@ -86,8 +95,11 @@ public class Agregar_Distribuidor extends BottomSheetDialogFragment {
                     distribuidor.setEstado(txtDistribuidorEstado.getText().toString().trim());
                     distribuidor.setEstatus("Por Definir");
                     distribuidor.setSexo(spnDistribuidorSexo.getSelectedItem().toString());
-                    distribuidor.setUID(UUID.randomUUID().toString());
-                    Administrador.ref_Distribuidor.child(distribuidor.getUID()).setValue(distribuidor);
+                    distribuidor.setSaldo(0);
+                    distribuidor.setLimite_Credito(0);
+                    distribuidor.setClientes(0);
+                    distribuidor.setUID(String.valueOf(ID));
+                    Administrador.ref_Distribuidor.child(String.valueOf(ID)).setValue(distribuidor);
                     dismiss();
                 }else{
                     Toast.makeText(getContext(), "Complete todos los campos", Toast.LENGTH_LONG).show();

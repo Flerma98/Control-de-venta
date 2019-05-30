@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -23,6 +24,8 @@ import com.karla.control_venta.Tablas.Cliente;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.UUID;
 
 public class Agregar_Cliente extends BottomSheetDialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -83,7 +86,14 @@ public class Agregar_Cliente extends BottomSheetDialogFragment implements DatePi
                     Cliente cliente = new Cliente();
                     int ID= 1;
                     try{
-                        ID= Integer.parseInt(Administrador.lista_Clientes.get(Administrador.lista_Clientes.size()-1).getID()) + 1;
+                        ArrayList<Cliente> clientes= Administrador.lista_Clientes;
+                        Collections.sort(clientes, new Comparator<Cliente>() {
+                            @Override
+                            public int compare(Cliente p1, Cliente p2) {
+                                return new Integer(p1.getID()).compareTo(new Integer(p2.getID()));
+                            }
+                        });
+                        ID= Integer.parseInt(clientes.get(clientes.size()-1).getID()) + 1;
                     }catch (Exception e){}
                     cliente.setID(String.valueOf(ID));
                     cliente.setNombre(txtNombres.getText().toString().trim());
@@ -96,11 +106,12 @@ public class Agregar_Cliente extends BottomSheetDialogFragment implements DatePi
                     cliente.setEstado(txtEstado.getText().toString().trim());
                     cliente.setEstatus("No Debe");
                     cliente.setSexo(spnSexo.getSelectedItem().toString());
+                    cliente.setDinero(0);
                     cliente.setReferencia(txtPersona_Referencia.getText().toString().trim());
                     cliente.setDireccion_Referencia(txtDireccion_Referencia.getText().toString());
                     cliente.setFecha_Nacimiento_Referencia(txtFecha_Nacmimiento_Referencia.getText().toString());
-                    cliente.setUID(UUID.randomUUID().toString());
-                    Administrador.ref_Usuarios.child(cliente.getUID()).setValue(cliente);
+                    cliente.setUID(String.valueOf(ID));
+                    Administrador.ref_Usuarios.child(String.valueOf(ID)).setValue(cliente);
                     dismiss();
                 }else{
                     Toast.makeText(getContext(), "Complete todos los campos", Toast.LENGTH_LONG).show();

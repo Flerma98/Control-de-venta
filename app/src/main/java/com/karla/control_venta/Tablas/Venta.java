@@ -6,14 +6,14 @@ public class Venta {
     private String IDDistribuidor;
     private int Numero_Quincenas;
     private String Fecha;
-    private long Numero_Vale;
+    private String Numero_Vale;
     private double Valor_Vale;
     private String UID;
 
     public Venta() {
     }
 
-    public Venta(String IDVenta, String IDCliente, String IDDistribuidor, int numero_Quincenas, String fecha, long numero_Vale, double valor_Vale, String UID) {
+    public Venta(String IDVenta, String IDCliente, String IDDistribuidor, int numero_Quincenas, String fecha, String numero_Vale, double valor_Vale, String UID) {
         this.IDVenta = IDVenta;
         this.IDCliente = IDCliente;
         this.IDDistribuidor = IDDistribuidor;
@@ -64,11 +64,11 @@ public class Venta {
         Fecha = fecha;
     }
 
-    public long getNumero_Vale() {
+    public String getNumero_Vale() {
         return Numero_Vale;
     }
 
-    public void setNumero_Vale(long numero_Vale) {
+    public void setNumero_Vale(String numero_Vale) {
         Numero_Vale = numero_Vale;
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,8 +16,10 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karla.control_venta.Administrador;
+import com.karla.control_venta.BottomSheets.Cliente_Abonos;
 import com.karla.control_venta.BottomSheets.Editar_Cliente;
 import com.karla.control_venta.R;
 import com.karla.control_venta.Tablas.Cliente;
@@ -81,6 +84,7 @@ public class Adaptador_Admin_Clientes extends RecyclerView.Adapter<Adaptador_Adm
                                 bottomSheet_Editar_Cliente.show(fragmentManager, "Editar_Cliente");
                                 return true;
                             case R.id.eliminar:
+
                                 Administrador.ref_Usuarios.child(cliente.getUID()).removeValue();
                                 return true;
                             default:
@@ -89,6 +93,19 @@ public class Adaptador_Admin_Clientes extends RecyclerView.Adapter<Adaptador_Adm
                     }
                 });
                 popup.show();
+            }
+        });
+
+        clientesViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Administrador.lista_Abono!=null && !Administrador.lista_Abono.isEmpty()) {
+                    Cliente_Abonos.cliente = cliente;
+                    Cliente_Abonos bottomSheet = new Cliente_Abonos();
+                    bottomSheet.show(fragmentManager, "Cliente_Abonos");
+                }else{
+                    Toast.makeText(mContext, "No hay abonos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -143,9 +160,11 @@ public class Adaptador_Admin_Clientes extends RecyclerView.Adapter<Adaptador_Adm
 
         TextView txtNombre, txtCorreo, txtTelefono, txtID, txtEstatus;
         ImageView ivMenu;
+        CardView cardView;
 
         public ClientesViewHolder(View itemView){
             super(itemView);
+            cardView= itemView.findViewById(R.id.rv_cardview);
             txtNombre= itemView.findViewById(R.id.rv_Nombre);
             txtCorreo= itemView.findViewById(R.id.rv_Correo);
             txtTelefono= itemView.findViewById(R.id.rv_Telefono);

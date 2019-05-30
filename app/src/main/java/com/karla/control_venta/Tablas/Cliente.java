@@ -12,6 +12,7 @@ public class Cliente {
     private String Estado;
     private String Estatus;
     private String Sexo;
+    private double Dinero;
     private String Referencia;
     private String Direccion_Referencia;
     private String Fecha_Nacimiento_Referencia;
@@ -20,7 +21,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String ID, String apellido_Paterno, String apellido_Materno, String nombre, String telefono, String correo, String fecha_Nacimiento, String ciudad, String estado, String estatus, String sexo, String referencia, String direccion_Referencia, String fecha_Nacimiento_Referencia, String UID) {
+    public Cliente(String ID, String apellido_Paterno, String apellido_Materno, String nombre, String telefono, String correo, String fecha_Nacimiento, String ciudad, String estado, String estatus, String sexo, double dinero, String referencia, String direccion_Referencia, String fecha_Nacimiento_Referencia, String UID) {
         this.ID = ID;
         Apellido_Paterno = apellido_Paterno;
         Apellido_Materno = apellido_Materno;
@@ -32,6 +33,7 @@ public class Cliente {
         Estado = estado;
         Estatus = estatus;
         Sexo = sexo;
+        Dinero = dinero;
         Referencia = referencia;
         Direccion_Referencia = direccion_Referencia;
         Fecha_Nacimiento_Referencia = fecha_Nacimiento_Referencia;
@@ -124,6 +126,14 @@ public class Cliente {
 
     public void setSexo(String sexo) {
         Sexo = sexo;
+    }
+
+    public double getDinero() {
+        return Dinero;
+    }
+
+    public void setDinero(double dinero) {
+        Dinero = dinero;
     }
 
     public String getReferencia() {

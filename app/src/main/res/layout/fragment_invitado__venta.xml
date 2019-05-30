@@ -3,12 +3,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".Invitado_Venta">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Invitado Venta " />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Realizar Venta"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:padding="10dp"
+            android:background="@drawable/edittext_redondo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                android:id="@+id/tilUsuario_Nombre"
+                android:hint="Nombre del Cliente">
+
+                <EditText
+                    android:id="@+id/txt_abono_Nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:drawablePadding="5dp"
+                    android:maxLength="30"
+                    android:textSize="18sp"
+                    android:inputType="textPersonName|textCapWords"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                android:id="@+id/tilUsuario_ApellidoPatero"
+                android:hint="Apellido Paterno del Cliente">
+
+                <EditText
+                    android:id="@+id/txt_abono_ApellidoPaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:drawablePadding="5dp"
+                    android:maxLength="30"
+                    android:textSize="18sp"
+                    android:inputType="textPersonName|textCapWords"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#808080"
+                android:id="@+id/tilUsuario_ApellidoMaterno"
+                android:hint="Apellido Materno del Cliente">
+
+                <EditText
+                    android:id="@+id/txt_abono_ApellidoMaterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:drawableLeft="@drawable/ic_usuario"
+                    android:drawablePadding="5dp"
+                    android:maxLength="30"
+                    android:textSize="18sp"
+                    android:inputType="textPersonName|textCapWords"
+                    android:paddingTop="16dp" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/btn_abono_BuscarCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Buscar Cliente"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:theme="@style/BotonColorido" />
+
+    </LinearLayout>
+
+    </ScrollView>
+
 
 </FrameLayout>

@@ -66,7 +66,7 @@ public class Admin_Distribuidor extends Fragment {
                     }
                     adapter.notifyDataSetChanged();
                     rv_Distribuidores.scheduleLayoutAnimation();
-                    if(Administrador.lista_Distribuidores.isEmpty()){ nohay.setVisibility(View.VISIBLE);  nohay.setText("No hay Distribuidores");}else{ nohay.setVisibility(View.GONE); }
+                    if(Administrador.lista_Distribuidores.isEmpty()){  nohay.setVisibility(View.VISIBLE);  }else{ nohay.setVisibility(View.GONE); }
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
